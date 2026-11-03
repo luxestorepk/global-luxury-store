@@ -82,4 +82,81 @@
         .payment-icons { font-size: 30px; display: flex; justify-content: center; gap: 20px; margin: 20px 0; color: #fff; }
     </style>
 </head>
-  
+  <body>
+    <div class="announcement-bar">✈️ FREE EXPRESS WORLDWIDE SHIPPING ON ORDERS OVER $150</div>
+    <nav class="navbar">
+        <div class="logo">LUXE<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#products">Collection</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+        <button class="cart-icon-btn" onclick="toggleCart()"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+    </nav>
+    <section id="hero" class="hero">
+        <div class="hero-text">
+            <span class="badge">NEW 2026 GLOBAL COLLECTION</span>
+            <h1>Couture Comfort For The Elite</h1>
+            <p>Handcrafted Italian leather footwear engineered with modern ergonomics.</p>
+            <div class="btn-group">
+                <a href="#products" class="btn btn-primary">Shop Collection</a>
+                <a href="#reviews" class="btn btn-outline">Client Reviews</a>
+            </div>
+        </div>
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80" alt="Hero"></div>
+    </section>
+    <section id="products">
+        <div class="section-header"><h2>Featured Collection</h2></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="product-tag">BEST SELLER</span>
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Loafers">
+                <h3>Vanguard Leather Loafers</h3>
+                <div class="stars">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <div class="price-box"><span class="price">$189.00</span></div>
+                <button class="add-btn" onclick="addToCart('Vanguard Leather Loafers', 189)">Add To Bag</button>
+            </div>
+        </div>
+    </section>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header"><h3>Your Bag</h3><span class="close-cart" onclick="toggleCart()">&times;</span></div>
+        <div class="cart-items" id="cartItems"><p style="color:#a0a0ab; text-align:center; margin-top:50px;">Empty bag</p></div>
+        <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:800;"><span>Total:</span><span id="cartTotal" style="color:#d4af37;">$0.00</span></div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">CHECKOUT (WHATSAPP)</button>
+        </div>
+    </div>
+    <div class="ai-widget-btn" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
+    <div class="chat-box" id="aiChatBox">
+        <div class="chat-header"><h4>✨ LUXE AI</h4><span style="cursor:pointer; color:#fff;" onclick="toggleChat()">&times;</span></div>
+        <div class="chat-body" id="chatBody"><div class="msg-bot">Hello! How can I help you today?</div></div>
+        <div class="chat-footer"><input type="text" id="chatInput" placeholder="Type..." onkeypress="handleKey(event)"><button onclick="sendChat()">➤</button></div>
+    </div>
+    <footer><p>&copy; 2026 LUXE Inc.</p></footer>
+    <script>
+        let cart = [], total = 0;
+        function toggleCart() { document.getElementById('cartDrawer').classList.toggle('active'); }
+        function addToCart(t, p) { cart.push({t, p}); total += p; updateCartUI(); toggleCart(); }
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            document.getElementById('cartTotal').innerText = '$' + total.toFixed(2);
+            let d = document.getElementById('cartItems');
+            d.innerHTML = cart.length === 0 ? '<p style="color:#a0a0ab; text-align:center; margin-top:50px;">Empty bag</p>' : cart.map(i => `<div class="cart-item"><div><h4>${i.t}</h4><p style="color:#d4af37;">$${i.p}.00</p></div></div>`).join('');
+        }
+        function checkoutWhatsApp() {
+            if(cart.length === 0) { alert("Bag is empty!"); return; }
+            let m = "New Order:%0A"; cart.forEach((i, idx) => m += `${idx+1}. ${i.t} - $${i.p}%0A`);
+            window.open(`https://wa.me/923716649231?text=${m}`, '_blank');
+        }
+        function toggleChat() { let b = document.getElementById('aiChatBox'); b.style.display = b.style.display === 'block' ? 'none' : 'block'; }
+        function sendChat() {
+            let i = document.getElementById('chatInput'), v = i.value.trim(), b = document.getElementById('chatBody');
+            if(!v) return;
+            b.innerHTML += `<div class="msg-user">${v}</div>`; i.value = ''; b.scrollTop = b.scrollHeight;
+            setTimeout(() => { b.innerHTML += `<div class="msg-bot">We offer worldwide shipping and custom sizes!</div>`; b.scrollTop = b.scrollHeight; }, 500);
+        }
+        function handleKey(e) { if(e.key === 'Enter') sendChat(); }
+    </script>
+</body>
+</html>
+
