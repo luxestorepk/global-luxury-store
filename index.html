@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* Top Announcement Bar */
         .announcement-bar {
             background: linear-gradient(90deg, #d4af37, #f3e5ab, #d4af37);
             color: #000;
@@ -45,7 +44,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Navigation */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -104,7 +102,6 @@
             right: -10px;
         }
 
-        /* Hero Section */
         .hero {
             display: flex;
             align-items: center;
@@ -171,7 +168,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(212, 175, 55, 0.15);
         }
 
-        /* Trust Bar */
         .trust-bar {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -186,7 +182,6 @@
         .trust-item { font-size: 14px; font-weight: 600; color: var(--text-muted); }
         .trust-item i { color: var(--accent-gold); margin-right: 8px; font-size: 18px; }
 
-        /* Products Section */
         .section-header { text-align: center; margin: 80px 0 40px; }
         .section-header h2 { font-size: 38px; margin-bottom: 10px; }
         .section-header p { color: var(--text-muted); }
@@ -260,7 +255,6 @@
 
         .add-btn:hover { background: var(--accent-gold); color: #000; }
 
-        /* Reviews Section */
         .reviews-section {
             background-color: var(--card-bg);
             padding: 80px 8%;
@@ -285,7 +279,6 @@
         .reviewer { font-weight: 700; font-size: 15px; }
         .reviewer span { font-size: 12px; color: var(--accent-gold); display: block; font-weight: 400; }
 
-        /* Slide-out Cart Drawer */
         .cart-drawer {
             position: fixed;
             top: 0;
@@ -324,8 +317,6 @@
             border-radius: 8px;
         }
 
-        .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; }
-
         .checkout-btn {
             width: 100%;
             padding: 15px;
@@ -337,11 +328,11 @@
             cursor: pointer;
         }
 
-        /* AI Floating Chatbot Widget */
+        /* AI Floating Chatbot Widget Fix (Guaranteed visible) */
         .ai-widget-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
             width: 60px;
             height: 60px;
             background: linear-gradient(135deg, #d4af37, #f3e5ab);
@@ -352,8 +343,8 @@
             justify-content: center;
             font-size: 26px;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-            z-index: 9999;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6);
+            z-index: 99999 !important;
             transition: 0.3s;
         }
 
@@ -361,15 +352,15 @@
 
         .chat-box {
             display: none;
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
+            position: fixed !important;
+            bottom: 100px !important;
+            right: 30px !important;
             width: 340px;
             background-color: var(--card-bg);
             border: 1px solid var(--accent-gold);
             border-radius: var(--radius);
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-            z-index: 9999;
+            z-index: 99999 !important;
             overflow: hidden;
         }
 
@@ -437,7 +428,6 @@
             font-weight: 800;
         }
 
-        /* Payment Icons Footer */
         footer {
             text-align: center;
             padding: 40px 8%;
@@ -456,7 +446,6 @@
             color: #fff;
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-text h1 { font-size: 38px; }
@@ -469,12 +458,10 @@
 </head>
 <body>
 
-    <!-- Top Bar -->
     <div class="announcement-bar">
         ✈️ FREE EXPRESS WORLDWIDE SHIPPING ON ORDERS OVER $150 | 30-DAY EASY RETURNS
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">LUXE<span>.</span></div>
         <ul class="nav-links">
@@ -488,7 +475,6 @@
         </button>
     </nav>
 
-    <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-text">
             <span class="badge">NEW 2026 GLOBAL COLLECTION</span>
@@ -504,7 +490,6 @@
         </div>
     </section>
 
-    <!-- Trust Badges -->
     <section class="trust-bar">
         <div class="trust-item"><i class="fa-solid fa-truck-fast"></i> DHL Express Worldwide</div>
         <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> 256-Bit Encrypted Checkout</div>
@@ -512,7 +497,6 @@
         <div class="trust-item"><i class="fa-solid fa-award"></i> 100% Genuine Italian Leather</div>
     </section>
 
-    <!-- Products Grid -->
     <section id="products">
         <div class="section-header">
             <h2>Featured International Products</h2>
@@ -520,7 +504,6 @@
         </div>
 
         <div class="product-grid">
-            <!-- Product 1 -->
             <div class="product-card">
                 <span class="product-tag">BEST SELLER</span>
                 <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Vanguard Loafers">
@@ -533,7 +516,6 @@
                 <button class="add-btn" onclick="addToCart('Vanguard Leather Loafers', 189)">Add To Bag</button>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card">
                 <span class="product-tag">TRENDING</span>
                 <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=600&q=80" alt="Monaco Sneakers">
@@ -546,7 +528,6 @@
                 <button class="add-btn" onclick="addToCart('Monaco Premium Sneakers', 145)">Add To Bag</button>
             </div>
 
-            <!-- Product 3 -->
             <div class="product-card">
                 <span class="product-tag">LIMITED EDITION</span>
                 <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80" alt="Aura Runners">
@@ -561,7 +542,6 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
     <section id="reviews" class="reviews-section">
         <div class="section-header">
             <h2>Trusted By Global Clients</h2>
@@ -600,4 +580,19 @@
                 <span>Total:</span>
                 <span id="cartTotal" style="color: var(--accent-gold);">$0.00</span>
             </div>
-            <button class="checkout-btn" o
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">PROCEED TO CHECKOUT (WHATSAPP)</button>
+        </div>
+    </div>
+
+    <!-- AI Floating Chatbot Widget (Guaranteed Visible) -->
+    <div class="ai-widget-btn" onclick="toggleChat()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+
+    <div class="chat-box" id="aiChatBox">
+        <div class="chat-header">
+            <h4>✨ LUXE AI Sales Concierge</h4>
+            <span style="cursor: pointer; color: #fff;" onclick="toggleChat()">&times;</span>
+        </div>
+   
+   
