@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE | Premium Footwear Collection</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+        .announcement-bar {
+            background: linear-gradient(90deg, #d4af37, #f3e5ab);
+            color: #000;
+            text-align: center;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #141414;
+            border-bottom: 1px solid #262626;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d4af37;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .nav-icons {
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #cart-count {
+            background-color: #d4af37;
+            color: #000;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 2px 6px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .badge {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 20px;
+            border: 1px solid #d4af37;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #d4af37;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #b3922e;
+        }
+
+        .btn-secondary {
+            border: 1px solid #444;
+            color: #fff;
+            margin-left: 15px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .trust-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 25px 8%;
+            background-color: #141414;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        .trust-item i {
+            color: #d4af37;
+            margin-right: 8px;
+        }
+
+        .products-section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #888;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #141414;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #222;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+        }
+
+        .product-card .tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #d4af37;
+            color: #000;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stars span {
+            color: #777;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #666;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #d4af37;
+            color: #000;
+        }
+
+        .payment-section {
+            text-align: center;
+            padding: 40px 8%;
+            background-color: #111;
+            border-top: 1px solid #222;
+        }
+
+        .payment-section p {
+            font-size: 12px;
+            color: #777;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .payment-icons {
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: #aaa;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0a0a0a;
+            color: #555;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            .trust-bar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        ⚡ FREE WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $150 | 30-DAY EASY RETURNS ⚡
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">LUXE<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#features">Why Us</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <span class="badge">NEW 2026 COLLECTION</span>
+            <h1>Elegance In Every Step</h1>
+            <p>Crafted with Italian leather & modern ergonomic design. Experience ultimate luxury footwear tailored for global trendsetters.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">Explore Collection</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80" alt="Luxury Shoes Hero">
+        </div>
+    </section>
+
+    <section class="trust-bar">
+        <div class="trust-item"><i class="fa-solid fa-truck-fast"></i> Global Express Shipping</div>
+        <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> 100% Secure Checkout</div>
+        <div class="trust-item"><i class="fa-solid fa-rotate-left"></i> 30-Day Money Back</div>
+        <div class="trust-item"><i class="fa-solid fa-award"></i> Premium Italian Leather</div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="section-title">
+            <h2>Featured International Products</h2>
+            <p>Handcrafted footwear engineered for maximum comfort and timeless style.</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="tag">Best Seller</span>
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Product 1">
+                <h3>Vanguard Leather Loafers</h3>
+                <div class="stars">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                <p class="price">$189.00 <span class="old-price">$240.00</span></p>
+                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <span class="tag">Trending</span>
+                <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=600&q=80" alt="Product 2">
+                <h3>Monaco Premium Sneakers</h3>
+                <div class="stars">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                <p class="price">$145.00 <span class="old-price">$180.00</span></p>
+                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <span class="tag">Limited</span>
+                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80" alt="Product 3">
+                <h3>Aura Minimalist Runner</h3>
+                <div class="stars">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                <p class="price">$165.00 <span class="old-price">$210.00</span></p>
+                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="payment-section">
+        <p>ACCEPTED GLOBAL PAYMENT METHODS</p>
+        <div class="payment-icons">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-paypal"></i>
+            <i class="fa-brands fa-cc-apple-pay"></i>
+            <i class="fa-brands fa-cc-stripe"></i>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 LUXE International Inc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let count = 0;
+        function addToCart() {
+            count++;
+            document.getElementById("cart-count").innerText = count;
+            alert("Item added to cart! Total items: " + count);
+        }
+    </script>
+</body>
+          </html>
+          
